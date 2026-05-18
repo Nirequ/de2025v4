@@ -1,0 +1,58 @@
+<Window x:Class="Module4.App.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Валидация данных"
+        Width="700" Height="320"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        Background="{StaticResource BackgroundBrush}">
+    <Grid Margin="24">
+        <Border Style="{StaticResource CardPanel}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="240" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+                           Style="{StaticResource HeaderLabel}"
+                           Text="Валидация данных клиента" />
+
+                <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
+                           Style="{StaticResource SubtitleLabel}"
+                           Text="Запросите данные у эмулятора, проверьте корректность серии и номера паспорта и отправьте результат обратно." />
+
+                <Button Grid.Row="2" Grid.Column="0"
+                        x:Name="GetDataButton"
+                        Style="{StaticResource PrimaryButton}"
+                        Content="Получить данные"
+                        Margin="0,0,16,8"
+                        Click="OnGetDataClick" />
+                <TextBlock Grid.Row="2" Grid.Column="1"
+                           x:Name="PassportText"
+                           Style="{StaticResource DataValue}"
+                           Margin="0,0,0,8"
+                           Text="—" />
+
+                <Button Grid.Row="3" Grid.Column="0"
+                        x:Name="SendResultButton"
+                        Style="{StaticResource SecondaryButton}"
+                        Content="Отправить результат теста"
+                        Margin="0,8,16,0"
+                        IsEnabled="False"
+                        Click="OnSendResultClick" />
+                <TextBlock Grid.Row="3" Grid.Column="1"
+                           x:Name="ResultText"
+                           Style="{StaticResource StatusInfo}"
+                           Margin="0,8,0,0"
+                           Text="Сначала получите данные." />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
