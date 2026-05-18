@@ -1,0 +1,41 @@
+# --- .NET / Visual Studio ---
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+.vs/
+.vscode/
+*.user
+*.suo
+*.userprefs
+
+# Restore artefacts
+project.assets.json
+*.nuget.props
+*.nuget.targets
+
+# Test results
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+
+# Module 4 runtime artefacts
+module4/api/results.log
+module4/docs/results.log
+
+# Module 3/4 SQLite working copies
+module3/Module3.App/app.db
+module3/Module3.App/app.db-*

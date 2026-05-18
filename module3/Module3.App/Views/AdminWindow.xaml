@@ -1,0 +1,66 @@
+<Window x:Class="Module3.App.Views.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Администрирование пользователей"
+        Width="900" Height="560"
+        WindowStartupLocation="CenterScreen"
+        Closed="OnClosed">
+    <Grid Margin="24">
+        <Border Style="{StaticResource CardPanel}">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Top" Margin="0,0,0,16">
+                    <TextBlock Style="{StaticResource HeaderLabel}"
+                               Text="Пользователи системы" />
+                    <TextBlock Style="{StaticResource SubtitleLabel}"
+                               Text="Добавляйте новые учётные записи, изменяйте данные существующих, снимайте блокировки." />
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource PrimaryButton}"
+                                Content="Добавить пользователя"
+                                Margin="0,0,8,0"
+                                Click="OnAddClick" />
+                        <Button Style="{StaticResource SecondaryButton}"
+                                Content="Изменить выбранного"
+                                Margin="0,0,8,0"
+                                Click="OnEditClick" />
+                        <Button Style="{StaticResource SecondaryButton}"
+                                Content="Снять блокировку"
+                                Margin="0,0,8,0"
+                                Click="OnUnblockClick" />
+                        <Button Style="{StaticResource SecondaryButton}"
+                                Content="Сбросить пароль"
+                                Margin="0,0,8,0"
+                                Click="OnResetPasswordClick" />
+                        <Button Style="{StaticResource SecondaryButton}"
+                                Content="Обновить"
+                                Click="OnRefreshClick" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Bottom" Margin="0,16,0,0">
+                    <TextBlock x:Name="MessageText"
+                               Style="{StaticResource StatusInfo}"
+                               Text="" />
+                    <Button HorizontalAlignment="Right"
+                            Style="{StaticResource SecondaryButton}"
+                            Content="Выйти из системы"
+                            Margin="0,8,0,0"
+                            Click="OnLogoutClick" />
+                </StackPanel>
+
+                <DataGrid x:Name="UsersGrid"
+                          ItemsSource="{Binding}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Логин" Binding="{Binding Login}" Width="*" />
+                        <DataGridTextColumn Header="Роль"  Binding="{Binding Role}"  Width="*" />
+                        <DataGridTextColumn Header="Создан" Binding="{Binding CreatedAt, StringFormat=dd.MM.yyyy HH:mm}" Width="*" />
+                        <DataGridTextColumn Header="Последний вход" Binding="{Binding LastLoginAt, StringFormat=dd.MM.yyyy HH:mm}" Width="*" />
+                        <DataGridTextColumn Header="Неудачные попытки" Binding="{Binding FailedAttempts}" Width="Auto" />
+                        <DataGridCheckBoxColumn Header="Блокировка" Binding="{Binding IsBlocked}" Width="Auto" />
+                        <DataGridCheckBoxColumn Header="Сменить пароль" Binding="{Binding MustChangePassword}" Width="Auto" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,48 @@
+<Window x:Class="Module3.App.Views.UserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Рабочее место пользователя"
+        Width="640" Height="420"
+        WindowStartupLocation="CenterScreen"
+        Closed="OnClosed">
+    <Grid Margin="24">
+        <Border Style="{StaticResource CardPanel}">
+            <StackPanel>
+                <TextBlock x:Name="GreetingText" Style="{StaticResource HeaderLabel}" Text="Добро пожаловать" />
+                <TextBlock x:Name="SubtitleText" Style="{StaticResource SubtitleLabel}"
+                           Text="Вы успешно авторизовались в информационной системе транспортной компании." />
+
+                <Border Background="#F8FAFD"
+                        BorderBrush="{StaticResource BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Padding="16"
+                        Margin="0,12,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Информация о сеансе" FontWeight="SemiBold" />
+                        <TextBlock x:Name="InfoLogin"    Margin="0,8,0,0" />
+                        <TextBlock x:Name="InfoRole"     Margin="0,2,0,0" />
+                        <TextBlock x:Name="InfoLastLogin" Margin="0,2,0,0" />
+                    </StackPanel>
+                </Border>
+
+                <Grid Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0"
+                            Style="{StaticResource SecondaryButton}"
+                            Content="Сменить пароль"
+                            Margin="0,0,6,0"
+                            Click="OnChangePasswordClick" />
+                    <Button Grid.Column="1"
+                            Style="{StaticResource PrimaryButton}"
+                            Content="Выйти из системы"
+                            Margin="6,0,0,0"
+                            Click="OnLogoutClick" />
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

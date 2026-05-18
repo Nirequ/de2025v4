@@ -1,0 +1,59 @@
+<Window x:Class="Module3.App.Views.UserEditDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Карточка пользователя"
+        Width="460" Height="540"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow">
+    <Grid Margin="24">
+        <Border Style="{StaticResource CardPanel}">
+            <StackPanel>
+                <TextBlock x:Name="HeaderText"
+                           Style="{StaticResource HeaderLabel}"
+                           Text="Новый пользователь" />
+                <TextBlock x:Name="SubtitleText"
+                           Style="{StaticResource SubtitleLabel}"
+                           Text="Заполните поля и нажмите «Сохранить»." />
+
+                <TextBlock Text="Логин" Style="{StaticResource FieldLabel}" />
+                <TextBox x:Name="LoginInput" />
+
+                <TextBlock Text="Роль" Style="{StaticResource FieldLabel}" />
+                <ComboBox x:Name="RoleInput" />
+
+                <TextBlock Text="Пароль" Style="{StaticResource FieldLabel}" />
+                <PasswordBox x:Name="PasswordInput" />
+                <TextBlock x:Name="PasswordHint"
+                           Style="{StaticResource StatusInfo}"
+                           Text="Оставьте пустым, чтобы не менять текущий пароль." />
+
+                <CheckBox x:Name="BlockedToggle"
+                          Margin="0,16,0,0"
+                          Content="Учётная запись заблокирована" />
+
+                <Grid Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0"
+                            Style="{StaticResource PrimaryButton}"
+                            Content="Сохранить"
+                            Margin="0,0,6,0"
+                            Click="OnSaveClick" />
+                    <Button Grid.Column="1"
+                            Style="{StaticResource SecondaryButton}"
+                            Content="Отмена"
+                            Margin="6,0,0,0"
+                            Click="OnCancelClick" />
+                </Grid>
+
+                <TextBlock x:Name="MessageText"
+                           Style="{StaticResource StatusInfo}"
+                           Margin="0,12,0,0"
+                           Text="" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
