@@ -68,8 +68,10 @@ public sealed class PassportApiClient : IDisposable
             IsValid: outcome.IsValid,
             Message: outcome.Message,
             Reasons: outcome.Reasons);
+        var json = JsonSerializer.Serialize(payload, JsonOptions);
+        using var content = new StringContent(json, Encoding.UTF8, "application/json");
         var response = await _http
-            .PostAsJsonAsync("set_result", payload, JsonOptions, ct)
+            .PostAsync("set_result", content, ct)
             .ConfigureAwait(false);
         if (!response.IsSuccessStatusCode)
         {

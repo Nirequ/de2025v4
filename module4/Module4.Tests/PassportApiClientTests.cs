@@ -49,6 +49,11 @@ public class PassportApiClientTests
         Assert.Equal(HttpMethod.Post, handler.LastRequest!.Method);
         Assert.Equal("set_result", handler.LastRequest.RequestUri!.AbsolutePath.TrimStart('/'));
 
+        Assert.NotNull(handler.LastRequest!.Content);
+        Assert.NotNull(handler.LastRequest.Content!.Headers.ContentLength);
+        Assert.True(handler.LastRequest.Content.Headers.ContentLength > 0,
+            "Content-Length must be set (server.py reads only Content-Length, not chunked)");
+
         using var doc = JsonDocument.Parse(handler.LastBody!);
         Assert.Equal("4509", doc.RootElement.GetProperty("series").GetString());
         Assert.Equal("638172", doc.RootElement.GetProperty("number").GetString());
